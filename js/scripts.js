@@ -1,6 +1,6 @@
 $(document).ready( function(){
 	$(".dropdown-button").dropdown();
-
+	var check;
 	$('.modal-trigger').leanModal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: .5, // Opacity of modal background
@@ -88,28 +88,20 @@ $(document).ready( function(){
 	});
 	
 
-	// try
+	// test
 	
-	$('#modal-trigger').click(function(){
-		var entryName = $('.collection-item .row .col span').attr('data-name');
-		$('.collection-item .row .col span').text(entryName);
-		$('#modal .modal-content h4').text(entryName);
+	$('.modal-trigger').click(function(){
+		//console.log($(this).attr('data-name'));
+		$('.modal-content h4').text($(this).attr('data-name'));
 	});
 
 	$('#modal .modal-footer .btn-flat').click(function(){
-		var username1 = $("#name1").val();
-		//console.log(username2);
-		$("#entry").text(username1);
-		$("#entry").attr("data-name", username1);
-		var entry1New = $('#entry').attr('data-name');
-		//console.log(entry2New);
+		var entryName = $('#name').val();
+		profile.edit(entryName);
 	});
 
 	$('#toast').click(function(){
-		Materialize.toast('Reset', 4000, 'rounded');
-		$("#entry").attr("data-name", entry1Name);
-		$('#entry').text(entry1Name);
-		$('#modal .modal-content h4').text(entry1Name);
+		profile.cancel();
 	});
 
 });
